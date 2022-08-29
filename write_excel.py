@@ -111,14 +111,20 @@ from dic_to_list import list_e_fase1, list_e_fase2, list_e_fase3,  list_phi_f1
 #
 #     data.save()
 
+# absoluta ubicación de este archivo .py
 abs_path = os.path.dirname(__file__)
-# Path & name file
+
+# Path donde se van a guardar las planillas cargadas con datos
 relative_path_file = "/resultados"
 full_path_file = abs_path + relative_path_file
-# Path & name template SCVA
+if not os.path.exists(full_path_file):
+    os.mkdir(full_path_file)
+
+# Path Planilla SCVA
 relative_path_template_scva = "/Planillas/Planilla_SCVA.xlsx"
 full_path_template = abs_path + relative_path_template_scva
-# Path & name template normativa
+
+# Path Planilla p/normativa
 relative_path_template_norma = "/Planillas/Planilla_Norma.xls"
 full_path_template_norma = abs_path + relative_path_template_norma
 

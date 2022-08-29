@@ -9,6 +9,10 @@ abs_path = os.path.dirname(__file__)
 relative_path = "/DATA"
 full_path = abs_path + relative_path
 
+# Si no existe el directorio, lo crea el programa
+if not os.path.exists(full_path):
+    os.mkdir(full_path)
+
 # Para saber los puertos disponibles:
 # 1) En la función "read_serial_port()" colocá un punto de debug
 # 2) y sacá los comentarios de la línea 17, 18 y 19. También de la libreria port_lists
