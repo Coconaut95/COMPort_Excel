@@ -18,8 +18,8 @@ from dic_to_list import dic_to_list
 from write_excel import write_excel_scva, write_excel_norma
 
 # ---------------------------Inicia comunicacion serie-------------------------------------------------------------------
-# from com_serie import read_serial_port
-# read_serial_port()
+from com_serie import read_serial_port
+read_serial_port()
 # _______________________________________________________________________________________________________________________
 
 # file_text = abrir_archivo()
@@ -30,7 +30,7 @@ def open_file():
     abs_path = os.path.dirname(__file__)
     relative_path = "/DATA"
     full_path = abs_path + relative_path
-    filename = full_path + '/data_reac.txt' #data.txt
+    filename = full_path + '/data.txt' #data.txt
     with open(filename, 'r') as file:
         file_load = [lines.strip() for lines in file.readlines()]
     return file_load
