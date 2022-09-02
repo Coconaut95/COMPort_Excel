@@ -39,7 +39,7 @@ def open_file():
     abs_path = os.path.dirname(__file__)
     relative_path = "/DATA"
     full_path = abs_path + relative_path
-    filename = full_path + '/dataReactiva.txt' #data.txt
+    filename = full_path + '/data.txt' #data.txt
     with open(filename, 'r') as file:
         file_load = [lines.strip() for lines in file.readlines()]
     return file_load
