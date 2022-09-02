@@ -18,8 +18,8 @@ from dic_to_list import dic_to_list
 from write_excel import write_excel_scva, write_excel_norma
 
 # ---------------------------Inicia comunicacion serie-------------------------------------------------------------------
-# from com_serie import read_serial_port
-# read_serial_port()
+from com_serie import read_serial_port
+read_serial_port()
 # _______________________________________________________________________________________________________________________
 
 file_load = [] #contiene cada linea del archivo de datos.
