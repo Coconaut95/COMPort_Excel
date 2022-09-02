@@ -24,33 +24,43 @@ from write_excel import write_excel_scva, write_excel_norma
 
 file_load = [] #contiene cada linea del archivo de datos.
 
+while True:
+    id_medidor = input('Ingrese tipo y nº de serie completo del medidor: ').upper()
+    if len(id_medidor) == 12:
+        # TIPO[nº de serie: ########]
+        id_num = int(id_medidor[4:])
+        tipo = id_medidor[:4]
+        break
+    else:
+        print('Intente nuevamente por favor.')
+
 def open_file():
     global file_load
     abs_path = os.path.dirname(__file__)
     relative_path = "/DATA"
     full_path = abs_path + relative_path
-    filename = full_path + '/data_act.txt' #data.txt
+    filename = full_path + '/dataReactiva.txt' #data.txt
     with open(filename, 'r') as file:
         file_load = [lines.strip() for lines in file.readlines()]
     return file_load
 
-def get_tipo_num_serie():
-
-    dic = {'tipo': '', 'num_serie': ''}
-    for line in file_load:
-
-        expression = 'Type: ([A-Za-z]+)'
-        matches = re.search(expression, line)
-        expression1 = 'SerNo:([0-9]+)'
-        matches1 = re.search(expression1, line)
-
-        if matches:
-            dic['tipo'] = str(matches.group(1))
-            print(dic['tipo'])
-        if matches1:
-            dic['num_serie'] = str(matches1.group(1))
-            print(dic['num_serie'])
-            return dic
+# def get_tipo_num_serie():
+#
+#     dic = {'tipo': '', 'num_serie': ''}
+#     for line in file_load:
+#
+#         expression = 'Type: ([A-Za-z]+)'
+#         matches = re.search(expression, line)
+#         expression1 = 'SerNo:([0-9]+)'
+#         matches1 = re.search(expression1, line)
+#
+#         if matches:
+#             dic['tipo'] = str(matches.group(1))
+#             print(dic['tipo'])
+#         if matches1:
+#             dic['num_serie'] = str(matches1.group(1))
+#             print(dic['num_serie'])
+#             return dic
 
 def data_from_txt():
     dic_list = []
@@ -86,7 +96,7 @@ input_num = input()
 
 if input_num == '1':
     dic_to_list(data_from_txt())
-    write_excel_scva(get_tipo_num_serie())
+    write_excel_scva(id_num)
 
 elif input_num == '2':
-    write_excel_norma(data_from_txt(), get_tipo_num_serie())
+    write_excel_norma(data_from_txt(), id_num, tipo)

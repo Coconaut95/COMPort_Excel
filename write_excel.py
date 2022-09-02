@@ -22,14 +22,14 @@ full_path_template = abs_path + relative_path_template_scva
 relative_path_template_norma = "/Planillas/Planilla_Norma.xls"
 full_path_template_norma = abs_path + relative_path_template_norma
 
-def write_excel_scva(name_scva):
-    name_file = full_path_file + '/SCVA_' + name_scva['num_serie'] + '.xlsx'
+def write_excel_scva(num_serie):
+    name_file = full_path_file + '/' + 'SCVA_' + str(num_serie) + '.xlsx'
 
     if list_phi_f1[0] == '0': # Para identificar si es un archivo de activa.
         wb = load_workbook(filename=full_path_template)
         ws = wb.worksheets[0]
         ws['F4'] = datetime.now().date()
-        ws['E14'] = name_scva['num_serie']
+        ws['E14'] = num_serie
         ws['F14'] = list_e_fase1[0]
         ws['G14'] = list_e_fase1[1]
         ws['H14'] = list_e_fase1[2]
@@ -38,7 +38,7 @@ def write_excel_scva(name_scva):
         ws['K14'] = list_e_fase1[5]                # F14, G14 y H14 carga alta fase 1. I14, J14 y K14 carga baja fase 1.
 
         if list_e_fase2:                                                       # Si pasa el If, es un medidor trifásico.
-            ws['E56'] = name_scva['num_serie']
+            ws['E56'] = num_serie
             ws['F56'] = list_e_fase2[0]
             ws['G56'] = list_e_fase2[1]
             ws['H56'] = list_e_fase2[2]
@@ -46,7 +46,7 @@ def write_excel_scva(name_scva):
             ws['J56'] = list_e_fase2[4]
             ws['K56'] = list_e_fase2[5]
 
-            ws['E98'] = name_scva['num_serie']
+            ws['E98'] = num_serie
             ws['F98'] = list_e_fase3[0]
             ws['G98'] = list_e_fase3[1]
             ws['H98'] = list_e_fase3[2]
@@ -83,9 +83,9 @@ def write_excel_scva(name_scva):
 
     wb.save(filename = name_file)
 
-def write_excel_norma(data, type_num):    
+def write_excel_norma(data, num_serie, tipo):
 
-    name_file = full_path_file + '/Planilla_Norma' + type_num['num_serie'] + '.xlsx'
+    name_file = full_path_file + '/' + 'Planilla_Norma' + str(num_serie) + '.xlsx'
     #name = 'G:/facundo/Escritorio/Herencia centurion/Parser_project_2/resultados/' + 'Planilla_Norma_' + type_num['num_serie'] + '.xlsx'
 
     if data[0]['phi'] == '0':  # Si es de activa, entra al if.
@@ -93,8 +93,8 @@ def write_excel_norma(data, type_num):
         sheet = wb.sheets['Hoja1']
         #Datos
         sheet.range('J6:N6').value = datetime.now().date()
-        sheet.range('J9:K9').value = type_num['tipo']
-        sheet.range('M9:N9').value = type_num['num_serie']
+        sheet.range('J9:K9').value = tipo
+        sheet.range('M9:N9').value = num_serie
         #Valores de errores p/ cargas activas.
         sheet.range('I50:Q50').value = data[0]['error']
         sheet.range('I77:Q77').value = data[1]['error']
