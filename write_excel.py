@@ -83,9 +83,7 @@ def write_excel_scva(name_scva):
 
     wb.save(filename = name_file)
 
-def write_excel_norma(data, type_num):
-    # Problema! ---> Cuando el .txt cargado no tiene = longitud de datos especificada p/hacer el excel
-    # no me genera el archivo.
+def write_excel_norma(data, type_num):    
 
     name_file = full_path_file + '/Planilla_Norma' + type_num['num_serie'] + '.xlsx'
     #name = 'G:/facundo/Escritorio/Herencia centurion/Parser_project_2/resultados/' + 'Planilla_Norma_' + type_num['num_serie'] + '.xlsx'

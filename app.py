@@ -18,8 +18,8 @@ from dic_to_list import dic_to_list
 from write_excel import write_excel_scva, write_excel_norma
 
 # ---------------------------Inicia comunicacion serie-------------------------------------------------------------------
-from com_serie import read_serial_port
-read_serial_port()
+# from com_serie import read_serial_port
+# read_serial_port()
 # _______________________________________________________________________________________________________________________
 
 file_load = [] #contiene cada linea del archivo de datos.
@@ -29,7 +29,7 @@ def open_file():
     abs_path = os.path.dirname(__file__)
     relative_path = "/DATA"
     full_path = abs_path + relative_path
-    filename = full_path + '/data.txt' #data.txt
+    filename = full_path + '/data_act.txt' #data.txt
     with open(filename, 'r') as file:
         file_load = [lines.strip() for lines in file.readlines()]
     return file_load
@@ -46,8 +46,10 @@ def get_tipo_num_serie():
 
         if matches:
             dic['tipo'] = str(matches.group(1))
+            print(dic['tipo'])
         if matches1:
             dic['num_serie'] = str(matches1.group(1))
+            print(dic['num_serie'])
             return dic
 
 def data_from_txt():
