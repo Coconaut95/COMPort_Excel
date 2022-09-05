@@ -13,13 +13,18 @@ LP:   L--3 220V 0.04A
 """
 import re
 import os
-
+import keyboard
 from dic_to_list import dic_to_list
 from write_excel import write_excel_scva, write_excel_norma
+from com_serie import read_serial_port
+
+#key = True
+'''
+while key:
+'''
 
 # ---------------------------Inicia comunicacion serie-------------------------------------------------------------------
-from com_serie import read_serial_port
-read_serial_port()
+#read_serial_port()
 # _______________________________________________________________________________________________________________________
 
 file_load = [] #contiene cada linea del archivo de datos.
@@ -29,7 +34,7 @@ while True:
     if len(id_medidor) == 12:
         # TIPO[nº de serie: ########]
         id_num = int(id_medidor[4:])
-        tipo = id_medidor[:4]
+        tipo = id_medidor[:4]        
         break
     else:
         print('Intente nuevamente por favor.')
@@ -39,28 +44,10 @@ def open_file():
     abs_path = os.path.dirname(__file__)
     relative_path = "/DATA"
     full_path = abs_path + relative_path
-    filename = full_path + '/data.txt' #data.txt
+    filename = full_path + '/data_act.txt' #data.txt
     with open(filename, 'r') as file:
         file_load = [lines.strip() for lines in file.readlines()]
     return file_load
-
-# def get_tipo_num_serie():
-#
-#     dic = {'tipo': '', 'num_serie': ''}
-#     for line in file_load:
-#
-#         expression = 'Type: ([A-Za-z]+)'
-#         matches = re.search(expression, line)
-#         expression1 = 'SerNo:([0-9]+)'
-#         matches1 = re.search(expression1, line)
-#
-#         if matches:
-#             dic['tipo'] = str(matches.group(1))
-#             print(dic['tipo'])
-#         if matches1:
-#             dic['num_serie'] = str(matches1.group(1))
-#             print(dic['num_serie'])
-#             return dic
 
 def data_from_txt():
     dic_list = []
@@ -100,3 +87,14 @@ if input_num == '1':
 
 elif input_num == '2':
     write_excel_norma(data_from_txt(), id_num, tipo)
+'''
+    ##################################################################
+    # Opciones:
+    ##################################################################
+    print('##############################################')
+    print('Si desea cargar nuevos datos, presione ENTER.')
+    print('En caso contrario, presione cualquier tecla.')
+
+    if keyboard.read_key() != 'enter':
+        key = False
+'''
