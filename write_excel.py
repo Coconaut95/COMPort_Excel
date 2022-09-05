@@ -85,8 +85,7 @@ def write_excel_scva(num_serie):
 
 def write_excel_norma(data, num_serie, tipo):
 
-    name_file = full_path_file + '/' + 'Planilla_Norma_' + str(num_serie) + '.xlsx'
-    #name = 'G:/facundo/Escritorio/Herencia centurion/Parser_project_2/resultados/' + 'Planilla_Norma_' + type_num['num_serie'] + '.xlsx'
+    name_file = full_path_file + '/' + 'Planilla_Norma_' + str(num_serie) + '.xlsx'    
 
     if data[0]['phi'] == '0':  # Si es de activa, entra al if.
         wb = xw.Book(full_path_template_norma)
