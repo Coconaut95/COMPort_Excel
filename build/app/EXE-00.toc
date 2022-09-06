@@ -62,7 +62,7 @@
  [],
  False,
  False,
- 1662473541,
+ 1662477335,
  [('run.exe',
    'G:\\facundo\\Escritorio\\COMPort_To_Excel\\venv\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])

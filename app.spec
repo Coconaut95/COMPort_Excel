@@ -5,6 +5,7 @@ block_cipher = None
 
 added_data = [
 		('G:/facundo/Escritorio/COMPort_To_Excel/Planillas/Planilla_Norma.xls', 'Planillas'),
+		('G:/facundo/Escritorio/COMPort_To_Excel/Planillas/Planilla_Norma_redux.xlsx', 'Planillas'),
 		('G:/facundo/Escritorio/COMPort_To_Excel/Planillas/Planilla_SCVA.xlsx', 'Planillas')
 	]
 
