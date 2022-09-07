@@ -43,7 +43,7 @@ while key:
         abs_path = os.path.dirname(__file__)
         relative_path = "/DATA"
         full_path = abs_path + relative_path
-        filename = full_path + '/data.txt' #data.txt
+        filename = full_path + '/data.txt' # archivo por default: data.txt
         with open(filename, 'r') as file:
             file_load = [lines.strip() for lines in file.readlines()]
         return file_load
@@ -94,5 +94,7 @@ while key:
     print('Si desea cargar nuevos datos, presione ENTER.')
     print('En caso contrario, presione cualquier tecla.')
 
-    if keyboard.read_key() != 'enter':
+    if keyboard.read_key() == 'enter':
+        continue
+    else:
         key = False

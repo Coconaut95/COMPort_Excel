@@ -405,5 +405,8 @@ def write_excel_norma(data, num_serie, tipo):
 
         wb.save(name_file)
 
-
-
+'''
+Mejoras:
+* Modular el excel de norma en archivos separados para directos e indirectos. 
+* Dejar este modulo para el excel del SCVA
+'''
